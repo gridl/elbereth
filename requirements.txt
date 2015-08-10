@@ -1,1 +1,8 @@
-flask
+django
+
+gunicorn
+dj-static # for static files
+
+# for database
+psycopg2
+dj-database-url

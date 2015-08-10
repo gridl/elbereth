@@ -1,9 +1,6 @@
-from flask import Flask
+from django.http import HttpResponse
 import json
 import random
-
-
-app = Flask(__name__)
 
 
 poem = '''A Elbereth Gilthoniel
@@ -21,14 +18,9 @@ A tiro nin, Fanuilos!
 '''
 
 
-@app.route('/')
-def gibberish():
+def gibberish(*args, **kwargs):
     response = json.dumps({
         'version': 0.1,
         'elvish': random.choice(poem.split('\n'))
     })
-    return (response, 200, {'content-type': 'application/json'})
-
-
-if __name__ == '__main__':
-    app.run()
+    return HttpResponse(response, content_type='application/json')
